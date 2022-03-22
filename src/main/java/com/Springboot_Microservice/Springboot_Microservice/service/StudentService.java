@@ -11,25 +11,24 @@ import java.util.List;
 @Service
 public class StudentService {
     @Autowired
-    static
-    StudentRepository repository;
-    public static List<Student> getAllStudent(){
+        StudentRepository studentRepository;
+    public List<Student> getAllStudent(){
         List<Student> studentList=new ArrayList<Student>();
 
-        repository.findAll().forEach(student -> studentList.add(student));
+        studentRepository.findAll().forEach(student -> studentList.add(student));
         return studentList;
     }
     public Student getStudentById(int id)
     {
-        return repository.findById(id).get();
+        return studentRepository.findById(id).get();
     }
     public void saveOrUpdate(Student student)
     {
-        repository.save(student);
+        studentRepository.save(student);
     }
     public void delete(int id)
     {
-        repository.deleteById(id);
+       studentRepository.deleteById(id);
     }
 
 }
